@@ -1,0 +1,55 @@
+{
+    "name": "form",
+    "type": "block",
+    "template": "theme/block/form.html.twig",
+    "component": null,
+    "children": [
+
+    ],
+    "data": {
+        "block": {
+            "alignment": "right",
+            "headline": "Dies ist eine Headline",
+            "id": 1,
+            "text": "Sie möchten, dass Ihr Hund von einer erfahrenen Hand und einem liebevollen Herzen betreut wird? Kontaktieren Sie mich einfach über das unten stehende Formular, und lassen Sie uns gemeinsam dafür sorgen, dass Ihr Hund die besten Spaziergänge seines Lebens hat!",
+            "overline": "Dies ist eine Headline",
+            "form": [
+                {
+                    "type": "select",
+                    "label": "ANREDE*",
+                    "is_required": true,
+                    "options": [
+                        {"value": "herr", "label": "Herr"},
+                        {"value": "frau", "label": "Frau"},
+                        {"value": "divers", "label": "Divers"}
+
+                    ]
+                },
+                {
+                    "type": "email",
+                    "label": "VORNAME*",
+                    "placeholder": "VORNAME",
+                    "is_required": true
+                },
+                {
+                    "type": "text",
+                    "label": "NACHNAME*",
+                    "placeholder": "NACHNAME",
+                    "is_required": true
+                },
+                {
+                    "type": "textarea",
+                    "label": "NACHRICHT*",
+                    "placeholder": "ICH NACHRICHT",
+                    "is_required": false
+                }
+            ],
+            "type":"checkbox",
+            "label":"Hiermit erkläre ich, dass ich die AGB aufmerksam gelesen habe und dass ich. Meine Einwilligung zur Verarbeitung meiner persönlichen Daten gemäß geltender Datenschutzverordung gebe.",
+            "is_required": true,
+            "ctaTitle": "KONTAKT AUFNEHMEN",
+            "ctaLink": "http://google.com",
+            "ctaTarget": "_blank"
+        }
+    }
+}

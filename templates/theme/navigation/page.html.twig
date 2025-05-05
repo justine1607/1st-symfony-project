@@ -1,0 +1,27 @@
+<div class="menu-container" data-sub-menu-target="menuContainer">
+    {% if navigation is defined and navigation.main %}
+        <div class="menu">
+            {% for node in navigation.main.nodes %}
+                <div class="nav-item {% if node.children|length > 0 %}has-submenu{% endif %}"  {% if node.children|length > 0 %} data-action="click->menu#headline" {% endif %}>
+                    {% if node.name == "page"%}
+                        <a href="{{ node.subject.url }}" class="nav-links">{{ node.label }}</a>
+                    {% elseif node.name == "submenu" and node.children|length > 0 %}
+                        <div class="submenu-container">
+                            <a  href="#" class="headline">{{ node.label ?? node.subject.title }}</a>
+                            <ul class="sub-menu" data-menu-target="subMenu">
+                                {% for node in node.children %}
+                                    <li class="sub-menu-list">
+                                        <a href="/show" class="list-font">{{ node.label ?? node.subject.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <div class="toggle-indicator" data-menu-target="toggleIcon">
+                        <span class="icon icons icons-chevron-down"></span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

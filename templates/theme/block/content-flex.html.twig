@@ -1,0 +1,23 @@
+<div class="block-content content-{{ block.layout }}">
+    <div class="theme-container">
+        <div class="flex">
+            {% for item in block.items %}
+                <div class="wrapper">
+                    <div class="media-container">
+                        <img src="{{ media_url(item.media) }}" alt="{{ media_parameter(item.media, 'alt') }}">
+                    </div>
+                    <div class="texts-container">
+                        <div class="theme-overline ">{{ item.overline|html_sanitize }}</div>
+                        <div class="theme-headline headline">{{ item.headline|html_sanitize }}</div>
+                        <div class="copy">{{ item.copy|html_sanitize }}</div>
+                        <div class="button-container">
+                            <div class="btn-wrapper">
+                                <a class="theme-cta theme-button" href="{{ item.ctaLink }}" target="{{ item.ctaTarget }}">{{ item.ctaTitle }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

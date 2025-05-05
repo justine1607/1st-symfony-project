@@ -1,0 +1,23 @@
+<div class="block-nag-screen">
+    <div class="theme-container">
+        <div class="wrapper">
+            <div class="ex-toggle">
+                <div class="lines"></div>
+            </div>
+            <div class="container-wrapper">
+                <div class="headline-container">
+                    <div class="overline theme-overline">{{ block.overline|html_sanitize }}</div>
+                    <div class="theme-headline boldHeadline">{{ block.headline|html_sanitize }}</div>
+                </div>
+                <div class="text-container">
+                    <div class="copy">{{ block.copy|html_sanitize }}</div>
+                </div>
+
+                <div class="button-container"><div class="btn-wrapper">
+                        <a class="theme-cta theme-button"  href="{{ block.ctaLink }}" target="{{ block.ctaTarget }}">{{ block.ctaTitle }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

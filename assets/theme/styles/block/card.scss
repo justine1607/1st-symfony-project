@@ -1,0 +1,67 @@
+.block-card {
+   padding: 50px 0;
+   &.card-text {
+      .flex{gap: 50px;}
+      .media-container {flex: 1;}
+      .text-container {flex: 1;}
+   }
+   &.card-gradient {
+      .flex{position: relative;}
+      .media-container {
+         position: relative;
+         flex: 0 0 65.52%;
+      }
+      .media-container img {
+         -webkit-mask-image: linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0) 100%);
+         mask-image: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
+      }
+      .text-container {
+         position: absolute;width: 100%;left: auto;right: 0;
+         flex: 0 0 calc(48.3%);max-width: calc(48.3%);
+         z-index: 1;
+      }
+   }
+   &.card-stacked {
+      .flex{
+         flex-direction: column;gap: 20px;
+         margin: 0 auto;max-width: 733px;
+      }
+   }
+   .flex{display: flex;align-items: center;}
+   .media-container{width: 100%;}
+}
+@include screenMaxWidth(1440px){
+   .block-card{
+      &.card-text{
+         .flex{gap: 20px;}
+      }
+   }
+}
+@include screenMaxWidth(1024px){
+   .block-card{
+      &.card-gradient{
+         .media-container img{
+            mask-image: linear-gradient(to left, #fff 0%, rgba(255, 255, 255, 0) 100%);
+         }
+         .text-container{position: unset;max-width: unset;margin-top: -65px;}
+      }
+      &.card-stacked{
+         .flex{ max-width: 622px;}
+      }
+      .flex{
+         max-width: 622px;
+         margin-inline: auto;
+         flex-direction: column;
+      }
+      .media-container{width: 100%;}
+   }
+}
+@include screenMaxWidth(768px){
+   .block-card{
+      &.card-stacked {
+         .flex {max-width: unset;}
+      }
+      .flex{max-width: unset;}
+   }
+}
+

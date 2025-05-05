@@ -1,0 +1,49 @@
+<div class="block-jobs" data-controller="jobs">
+    <div class="theme-container">
+        <div class="flex" data-jobs-target="grid">
+            <div class="left">
+                <div class="label">
+                    <div class="span" data-jobs-target="borderContainer" data-action="click->jobs#filterByJobType">
+                        <button class="overline" >Alle anzeigen</button>
+                        <div class="toggle-indicator">
+                            <span class="icon icons icons-chevron-down"></span>
+                        </div>
+                    </div>
+                    <div class="types-container" data-jobs-target="typeContainer">
+                        <div class="items hidden" data-jobs-target="allJobs" data-action="click->jobs#filterItems" data-type="">
+                            Alle anzeigen
+                        </div>
+                        {% set jobTypes = [] %}
+                        {% for job in block.jobs %}
+                            {% if job.type not in jobTypes %}
+                                {% set jobTypes = jobTypes|merge([job.type]) %}
+                            {% endif %}
+                        {% endfor %}
+                        {% for type in jobTypes %}
+                            <div class="items" data-jobs-target="type" data-action="click->jobs#filterItems" data-type="{{ type }}">
+                                {{ type|html_sanitize }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="right" data-jobs-target="rightContainer">
+                {% for type in jobTypes %}
+                    <div class="job-group" data-job-type="{{ type }}">
+                        {% for job in block.jobs %}
+                            {%  if job.type == type  %}
+                                <div class="items" data-jobs-target="item" data-type="{{ job.type }}">
+                                    <div class="type">{{ job.type|html_sanitize }}</div>
+                                    <div class="text-container">
+                                        <span class="theme-headline">{{ job.title|html_sanitize }}</span>
+                                        <span class="copy theme-copy">{{ job.copy|html_sanitize }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

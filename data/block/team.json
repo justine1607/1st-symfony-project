@@ -1,0 +1,129 @@
+{
+    "name": "team",
+    "type": "block",
+    "template": "theme/block/team.html.twig",
+    "component": null,
+    "children": [
+
+    ],
+    "data": {
+        "block": {
+            "layout": "team",
+            "overline": "Test",
+            "headline": "Test",
+            "items": [
+                {
+                    "id": 7,
+                    "position": "position",
+                    "teamMember": {
+                        "picture": {
+                            "id": 1,
+                            "mimeType": "image/jpeg",
+                            "extension": "jpg",
+                            "filename": "1.jpg",
+                            "parameters": {
+                                "alt": null,
+                                "title": null
+                            },
+                            "md5Checksum": "0ae20a86307cb5e55d2284825a6c0847"
+                        },
+                        "position": null,
+                        "firstName": "Vorname ",
+                        "lastName": "Nachname",
+                        "phone": "+49 (0) 89 1234 5678 90",
+                        "email": "hello@enhavo.com"
+                    }
+                },
+                {
+                    "id": 7,
+                    "position": "position",
+                    "teamMember": {
+                        "picture": {
+                            "id": 1,
+                            "mimeType": "image/jpeg",
+                            "extension": "jpg",
+                            "filename": "1.jpg",
+                            "parameters": {
+                                "alt": null,
+                                "title": null
+                            },
+                            "md5Checksum": "0ae20a86307cb5e55d2284825a6c0847"
+                        },
+                        "position": null,
+                        "firstName": "Vorname ",
+                        "lastName": "Nachname",
+                        "phone": "+49 (0) 89 1234 5678 90",
+                        "email": "hello@enhavo.com"
+                    }
+                },
+                {
+                    "id": 7,
+                    "position": "position",
+                    "teamMember": {
+                        "picture": {
+                            "id": 1,
+                            "mimeType": "image/jpeg",
+                            "extension": "jpg",
+                            "filename": "1.jpg",
+                            "parameters": {
+                                "alt": null,
+                                "title": null
+                            },
+                            "md5Checksum": "0ae20a86307cb5e55d2284825a6c0847"
+                        },
+                        "position": null,
+                        "firstName": "Vorname ",
+                        "lastName": "Nachname",
+                        "phone": "+49 (0) 89 1234 5678 90",
+                        "email": "hello@enhavo.com"
+                    }
+                },
+                {
+                    "id": 7,
+                    "position": "position",
+                    "teamMember": {
+                        "picture": {
+                            "id": 1,
+                            "mimeType": "image/jpeg",
+                            "extension": "jpg",
+                            "filename": "1.jpg",
+                            "parameters": {
+                                "alt": null,
+                                "title": null
+                            },
+                            "md5Checksum": "0ae20a86307cb5e55d2284825a6c0847"
+                        },
+                        "position": null,
+                        "firstName": "Vorname ",
+                        "lastName": "Nachname",
+                        "phone": "+49 (0) 89 1234 5678 90",
+                        "email": "hello@enhavo.com"
+                    }
+                },
+                {
+                    "id": 7,
+                    "position": "position",
+                    "teamMember": {
+                        "picture": {
+                            "id": 1,
+                            "mimeType": "image/jpeg",
+                            "extension": "jpg",
+                            "filename": "1.jpg",
+                            "parameters": {
+                                "alt": null,
+                                "title": null
+                            },
+                            "md5Checksum": "0ae20a86307cb5e55d2284825a6c0847"
+                        },
+                        "position": null,
+                        "firstName": "Vorname ",
+                        "lastName": "Nachname",
+                        "phone": "+49 (0) 89 1234 5678 90",
+                        "email": "hello@enhavo.com"
+                    }
+                }
+            ],
+            "id": 4
+        }
+    }
+}

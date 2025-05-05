@@ -1,0 +1,22 @@
+.block-logo {
+  padding: 50px 0;
+  .grid {display: grid;grid-template-columns: repeat(6, 1fr);gap: 55px;}
+  .overline {grid-column: span 6;color: $textColor3;text-align: center;}
+}
+@include screenMaxWidth(1440px){
+  .block-logo{
+    .grid{gap: 20px;}
+    .theme-container{padding-inline: 40px;}
+  }
+}
+@include screenMaxWidth(1023px){
+  .block-logo{
+    img{grid-column: span 2;}
+  }
+}
+@include screenMaxWidth(767px){
+  .block-logo{
+    img{grid-column: span 3;}
+    .theme-container{padding-inline: 20px;}
+  }
+}

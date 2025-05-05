@@ -1,0 +1,141 @@
+.block-form {
+  padding: 50px 0;
+  .form-grid {display: grid;grid-template-columns: repeat(6, 1fr);grid-gap: 51px;}
+  .form {grid-column: 2 / span 4;
+    .btn-container{
+      margin-top: 50px;
+      border-radius: 35px;border: 2px solid $textColor2;
+    }
+    .content-wrapper{display: flex;align-items: center;gap: 10px;}
+    .checkbox-label{font-size: 10px;line-height: 14px;}
+    .cta {font-weight: 700;cursor: pointer;padding:15px 30px;width: 100%;height: auto;display: flex;justify-content: center;align-items: center;}
+    .error-border {border: 1px solid red !important;margin-bottom: 7px;}
+    input,
+    textarea{margin: 8px 0 19px 0;cursor: text;}
+    input[type='text'],
+    input[type='email'],
+    textarea,
+    .custom-select {
+      cursor: text;
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid #171717;
+      opacity: 1;
+      padding: 10px 20px;
+    }
+    .custom-select{
+      cursor: pointer;
+      margin: 8px 0 19px 0;
+      &.error-border{margin-bottom: 7px;}
+      .icons-chevron-down {
+        cursor: pointer;
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 12px;
+          height: 7px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='13' viewBox='0 0 23 13' fill='none'%3E%3Cpath d='M1.36363 1.30262C0.812382 1.85387 0.812382 2.74262 1.36363 3.29387L10.7124 12.6426C11.1511 13.0814 11.8599 13.0814 12.2986 12.6426L21.6474 3.29387C22.1986 2.74262 22.1986 1.85387 21.6474 1.30262C21.0961 0.751367 20.2074 0.751367 19.6561 1.30262L11.4999 9.44762L3.34363 1.29137C2.80363 0.751369 1.90363 0.751368 1.36363 1.30262Z' fill='black'/%3E%3C/svg%3E");
+          background-size: contain;
+          background-repeat: no-repeat;
+          transition: transform 0.3s ease;
+        }
+      }
+      .option-display{
+        color: #CBCBCB;
+        padding-top: 5px;
+      }
+      .options-value{display: none;
+        &.open-course{
+          display: block;
+        }
+      }
+      .toggle-indicator{
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .wrapper{
+        display: flex;
+      }
+      &.open-options{
+        .options-value{display: block;}
+        .option-item,.all-course{margin-top: 10px;color: #000000;}
+        .toggle-indicator{rotate: 180deg;}
+      }
+    }
+    input:not(:placeholder-shown),
+    textarea:not(:placeholder-shown) {
+      font-weight: 700;
+      text-transform: uppercase;
+      background: none;
+    }
+    input{
+      &.error-border{
+        border: 1px solid red;
+      }
+    }
+    input[type="checkbox"] {
+      margin: 0;
+      appearance: none;
+      min-height: 24px;min-width: 24px;
+      border: 2px solid #171717;;
+      background-color: white;
+      cursor: pointer;
+      position: relative;
+    }
+    input[type="checkbox"]:checked {
+      background-color: black;
+    }
+    input[type="checkbox"]::before {
+      content: "";
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M21.652 3.211c-.293-.295-.77-.295-1.061 0L9.41 14.34c-.293.297-.771.297-1.062 0L3.449 9.351c-.145-.148-.335-.221-.526-.222-.193-.001-.389.072-.536.222l-2.165 1.946c-.145.148-.223.333-.223.526s.078.397.223.544l4.94 5.184c.292.296.771.776 1.062 1.07l2.124 2.141c.292.293.769.293 1.062 0l14.366-14.34c.293-.294.293-.777 0-1.071l-1.061-1.061z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 14px;
+      background-position: center;
+      width: 20px;
+      height: 20px;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+    input[type="checkbox"]:checked::before {
+      opacity: 1;
+    }
+    input[type="checkbox"].error-text-box-border {
+      border: 1px solid red;
+    }
+    .label {font-weight: 700;letter-spacing: 0.45px;line-height: 1.055em;}
+    .required-message {
+      font-family: "Source Serif Pro";
+      display: none;
+      color: red;
+      font-size: 10px;
+      line-height: 26px;
+      letter-spacing: 0.1px;
+    }
+    .show-error {display: block;}
+    #email::placeholder,
+    #text::placeholder,
+    #textarea::placeholder,
+    .option-display,
+    .option-item,
+    .all-course{color: #CBCBCB;font-weight: 700;letter-spacing: 0.45px;line-height: 1.055em;text-transform: uppercase;}
+  }
+  .text-container {grid-column: 2 / span 4;}
+  .theme-headline{
+    &.boldHeadline{font-size: 5rem;line-height: 1.28em;}
+  }
+  .text {margin-top: 30px;font-size: 1.6rem;line-height: 1.25em;font-weight: 700;}
+}
+@include screenMaxWidth(1024px){
+  .block-form{
+    .form-grid{gap: 30px;}
+  }
+}
+@include screenMaxWidth(768px){
+  .block-form{
+    .form{grid-column: span 6;}
+    .text-container{grid-column: span 6;}
+  }
+}

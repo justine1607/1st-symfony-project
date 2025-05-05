@@ -1,0 +1,58 @@
+<div class="block-form">
+    <div class="theme-container">
+        <div class="form-grid">
+            <div class="text-container">
+                <div class="theme-headline boldHeadline">{{ block.headline|html_sanitize }}</div>
+                <div class="theme-overline">{{ block.overline|html_sanitize }}</div>
+                <div class="text ">{{ block.text|html_sanitize }}</div>
+                <div class="text ">Alle Felder mit * sind Pflichtfelder.</div>
+            </div>
+            <form class="form" data-controller="form">
+                {% for item in block.form %}
+                    {% set input_id = item.type|replace({' ': '-'})|lower %}
+                    <label for="{{ input_id }}" class="label">{{ item.label|html_sanitize }}</label>
+                    {% if item.type == 'select' %}
+                    <div class="custom-select" data-form-target="openValue">
+                        <input  type="hidden" name="{{ item.label }}" id="{{ input_id }}" {% if item.is_required %}required{% endif %}>
+                        <div class="wrapper" data-action="click->form#openOptions">
+                            <div class="option-display" data-form-target="optionDisplay">{{item.label}}</div>
+                            <div class="toggle-indicator" data-form-target="toggleIndicator">
+                                <span class="icon icons icons-chevron-down"></span>
+                            </div>
+                        </div>
+                        <div class="options-value " data-form-target="allCourse" >
+                        <div class="all-course" style="display: none" data-action="click->form#closeCourse" data-form-target="showPlaceholder" >{{ item.label }}</div>
+                            {% for option in item.options %}
+                                <div class="option-item"  data-form-target="item" data-value="{{ option.value }}" data-action="click->form#selectedCourse">
+                                    {{ option.label }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% elseif item.type == 'textarea' %}
+                        <textarea data-form-target="input" name="{{ item.label }}" id="{{ input_id }}" placeholder="{{ item.placeholder|html_sanitize }}" {% if item.is_required %}required{% endif %}></textarea>
+                    {% else %}
+                    <input data-form-target="input" type="{{ item.type }}" name="{{ item.label }}" id="{{ input_id }}" placeholder="{{ item.placeholder|html_sanitize }}" {% if item.is_required %}required{% endif %}">
+                    {% endif %}
+                    {% if item.is_required %}
+                        <div class="required-message">Dieses Feld muss ausgefüllt sein.</div>
+                    {% endif %}
+                {% endfor %}
+                <div class="checkbox-group">
+                    <div class="content-wrapper" data-form-target="checkboxInput">
+                        <input type="checkbox"  name="{{ block.type }}" id="checkbox-{{ block.type|replace({' ': '-'})|lower }}" {% if block.is_required %}required{% endif %}>
+                        <label for="checkbox-{{ block.label|replace({' ': '-'})|lower }}" class="checkbox-label">
+                            {{ block.label|html_sanitize }}
+                        </label>
+                    </div>
+                    {% if block.is_required %}
+                        <div class="required-message">Dieses Feld muss ausgefüllt sein.</div>
+                    {% endif %}
+                </div>
+                <div class="btn-container" data-action="click->form#validateForm" data-form-target="formBtn">
+                    <a class="theme-cta cta theme-button">{{ block.ctaTitle }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
