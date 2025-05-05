@@ -23,7 +23,7 @@ export default class extends Controller {
     }
     resetHeader() {
         if (this.hasHeaderTarget) {
-            this.headerTarget.classList.remove('header-hover');
+            this.headerTarget.classLi1drst.remove('header-hover');
         }
     }
 

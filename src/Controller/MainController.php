@@ -14,10 +14,6 @@ class MainController extends AbstractController
     {
         $this->jsonDataLoader = $jsonDataLoader;
     }
-
-
-
-    // The homepage route now handles both `/` and `/block/{blockName}`.
     #[Route('/', name: 'homepage')]
     #[Route('/block/{blockName}', name: 'block_show', defaults: ['blockName' => null])]
     public function homepage(?string $blockName = null): Response

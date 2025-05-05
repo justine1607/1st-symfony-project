@@ -10,7 +10,7 @@ export default class extends Controller {
             centerMode: true,
             variableWidth: true,
             slidesToScroll: 1,
-            autoplay: false,
+            autoplay: true,
             arrows: false,
             dots: true,
             autoplaySpeed: 2000,
