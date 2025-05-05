@@ -11,10 +11,11 @@ export default class extends Controller{
 
     }
     filterItems(e) {
+        const jobs = document.querySelector('.block-jobs');
         const selectedType = e.target.getAttribute('data-type');
-        const typeContainer = document.querySelector('.types-container')
+        const typeContainer = jobs.querySelector('.types-container')
         const allItems = typeContainer.querySelectorAll('[data-type]')
-        const optionDisplay = document.querySelector('.overline');
+        const optionDisplay = jobs.querySelector('.overline');
         optionDisplay.textContent = selectedType;
         allItems.forEach(item => {
             if (item.getAttribute('data-type') === selectedType) {

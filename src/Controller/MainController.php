@@ -19,64 +19,42 @@ class MainController extends AbstractController
 
     // The homepage route now handles both `/` and `/block/{blockName}`.
     #[Route('/', name: 'homepage')]
-    #[Route('/page', name: 'page')]
-    #[Route('/block/{blockName}', name: 'show_block', defaults: ['blockName' => null])]
-    public function homepage(string $blockName = null): Response
+    #[Route('/block/{blockName}', name: 'block_show', defaults: ['blockName' => null])]
+    public function homepage(?string $blockName = null): Response
     {
-        // Load data dynamically for navigation
-        $filePathHome = $this->getParameter('kernel.project_dir') . '/data/navigation.json';
-        $dataHome = $this->jsonDataLoader->load($filePathHome);
+        $projectDir = $this->getParameter('kernel.project_dir');
 
-        $filePathPage = $this->getParameter('kernel.project_dir') . '/data/';
-        $dataPage = $this->jsonDataLoader->load($filePathHome);
+        // Load navigation
+        $navPath = $projectDir . '/data/navigation.json';
+        $navigationData = $this->jsonDataLoader->load($navPath);
 
-        // Default block path if no specific block name is provided
-        $directoryPath = $this->getParameter('kernel.project_dir') . '/data/block/';
+        // Determine block(s) to load
+        $blockDir = $projectDir . '/data/block/';
+        $pattern = $blockName ? $blockDir . $blockName . '*.json' : $blockDir . '*.json';
+        $matchedFiles = glob($pattern);
 
-        // If blockName is provided (i.e., coming from the block route), filter based on it
-        if ($blockName) {
-            $filePattern = $directoryPath . $blockName . '*.json';
-        } else {
-            // Otherwise, load all block files for the homepage
-            $filePattern = $directoryPath . '*.json';
+        if (empty($matchedFiles)) {
+            throw $this->createNotFoundException("No blocks found for " . ($blockName ?? 'homepage'));
         }
 
-        // Use glob to find matching files
-        $matchedFiles = glob($filePattern);
-
-        // Sort files alphabetically (optional)
-        usort($matchedFiles, function ($a, $b) {
-            return strcmp(pathinfo($a, PATHINFO_FILENAME), pathinfo($b, PATHINFO_FILENAME));
-        });
+        usort($matchedFiles, fn($a, $b) => strcmp(pathinfo($a, PATHINFO_FILENAME), pathinfo($b, PATHINFO_FILENAME)));
 
         $blocks = [];
-
-        // Load each matched JSON file
         foreach ($matchedFiles as $file) {
-            if (file_exists($file)) {
-                $blockData = $this->jsonDataLoader->load($file);
-
-                // Check if the block data is valid
-                if (isset($blockData['data']['block'])) {
-                    // If coming from a specific block, add the template information
-                    if ($blockName && isset($blockData['template'])) {
-                        $blockData['data']['block']['template'] = $blockData['template'];
-                    }
-                    // Add each block's data to the blocks array
-                    $blocks[] = $blockData['data']['block'];
+            $blockData = $this->jsonDataLoader->load($file);
+            if (isset($blockData['data']['block'])) {
+                if (isset($blockData['template'])) {
+                    $blockData['data']['block']['template'] = $blockData['template'];
                 }
+                $blocks[] = $blockData['data']['block'];
             }
         }
 
-        // If no blocks found, handle the error
-        if (empty($blocks)) {
-            throw $this->createNotFoundException('No blocks found or invalid block data structure.');
-        }
-
-        // Render the appropriate template
         return $this->render('base.html.twig', [
-            'navigation' => $dataHome['navigation'],
-            'blocks' => $blocks,  // Pass the loaded blocks data to the template
+            'navigation' => $navigationData['navigation'] ?? [],
+            'blocks' => $blocks,
         ]);
     }
+
+
 }
