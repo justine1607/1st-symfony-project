@@ -19,12 +19,16 @@ class MainController extends AbstractController
 
     // The homepage route now handles both `/` and `/block/{blockName}`.
     #[Route('/', name: 'homepage')]
+    #[Route('/page', name: 'page')]
     #[Route('/block/{blockName}', name: 'show_block', defaults: ['blockName' => null])]
     public function homepage(string $blockName = null): Response
     {
         // Load data dynamically for navigation
         $filePathHome = $this->getParameter('kernel.project_dir') . '/data/navigation.json';
         $dataHome = $this->jsonDataLoader->load($filePathHome);
+
+        $filePathPage = $this->getParameter('kernel.project_dir') . '/data/';
+        $dataPage = $this->jsonDataLoader->load($filePathHome);
 
         // Default block path if no specific block name is provided
         $directoryPath = $this->getParameter('kernel.project_dir') . '/data/block/';
