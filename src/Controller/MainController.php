@@ -51,6 +51,4 @@ class MainController extends AbstractController
             'blocks' => $blocks,
         ]);
     }
-
-
 }
