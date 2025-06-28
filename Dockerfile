@@ -18,7 +18,9 @@ WORKDIR /app
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts && \
+    ls -al /app/vendor/autoload_runtime.php
+
 
 # Install and build frontend assets
 RUN npm install && npm run build
