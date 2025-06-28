@@ -28,7 +28,8 @@ ENV APP_ENV=prod
 ENV APP_DEBUG=0
 
 # Expose the Symfony app on port 8000
-EXPOSE 8000
+EXPOSE 8080
 
 # Start the Symfony app using PHP's built-in server
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
+
